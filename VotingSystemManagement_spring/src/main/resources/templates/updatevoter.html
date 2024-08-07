@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<style>
+
+body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .register {
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .register input[type="text"],
+        .register input[type="date"],
+        .register input[type="password"],
+        .register input[type="radio"],
+        .register input[type="submit"] {
+            display: block;
+            width: calc(100% - 20px);
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .register input[type="radio"] {
+            display: inline-block;
+            width: auto;
+        }
+        .register label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .register input[type="submit"] {
+            background: #2575fc;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .register input[type="submit"]:hover {
+            background: #6a11cb;
+        }
+        .register span {
+            color: red;
+            font-size: 12px;
+        }
+
+</style>
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form action="@{/vidupdate}" method="post" class="register" th:object="${voter}">
+<center><h1>Update Voter</h1></center>
+  <input type="text" placeholder="Enter your Name" name="VoterName" th:field="*{VoterName}"required>
+  <span th:if="${#fields.hasErrors('VoterName')}" th:errors="*{VoterName}"></span>
+   
+   
+    <input type="date" name="DOB" required>
+     <span th:if="${#fields.hasErrors('DOB')}" th:errors="*{DOB}"></span>
+   
+    Male: <input type="radio" name="gender" value="male">
+    Female: <input type="radio" name="gender" value="female">
+    <input type="text" placeholder="Enter your Username" name="username" required>
+     <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+    
+    <input type="password" placeholder="Password" name="password" required>
+     <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+  
+  	<input type="submit" value="Register"> 
+  	
+</form>
+
+
+</body>
+</html>
